@@ -1,0 +1,19 @@
+{
+  "name": "di-pattern-example",
+  "version": "1.0.0",
+  "description": "demonstrate uasge of dependency injection",
+  "main": "index.js",
+  "author": "neithan",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^8.6.0",
+    "express": "^4.18.2",
+    "finalhandler": "^1.2.0"
+  },
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
