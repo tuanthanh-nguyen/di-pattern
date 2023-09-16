@@ -1,14 +1,17 @@
 const http = require('node:http')
 const express = require('express')
 const finalhandler = require('finalhandler')
-const dbFactory = require('./lib/db')
-const authServiceFactory = require('./lib/authService')
-const authControllerFactory = require('./lib/authController')
-const TOKEN_SECRET = '123456'
+const diContainer = require('./lib/diContainer')
+const TOKEN_SECRET = '712378'
 
-const db = dbFactory('class')
-const authService = authServiceFactory(db, TOKEN_SECRET)
-const authController = authControllerFactory(authService)
+diContainer.register('dbName', 'class')
+diContainer.register('tokenSecret', TOKEN_SECRET)
+diContainer.factory('db', require('./lib/db'))
+diContainer.factory('authService', require('./lib/authService'))
+diContainer.factory('authController', require('./lib/authController'))
+
+const authController = diContainer.get('authController')
+console.log(diContainer)
 
 const app = express()
 app.use(express.json())
